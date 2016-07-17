@@ -8,6 +8,7 @@ RUN apt-get -y install nodejs
 RUN apt-get -y install ssh
 RUN apt-get -y install libcurl4-openssl-dev
 RUN apt-get -y install git
+RUN apt-get -y install cron
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable --ruby
@@ -28,6 +29,7 @@ RUN /usr/sbin/update-rc.d -f nginx defaults
 # autorun nginx & sshd
 RUN echo service nginx start >> /etc/bash.bashrc
 RUN echo service ssh start >> /etc/bash.bashrc
+RUN echo service cron start >> /etc/bash.bashrc
 
 # create deploy user
 RUN mkdir /www
